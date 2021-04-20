@@ -1,0 +1,87 @@
+.html
+
+<!DOCTYPE html>
+<html lang="en" ng-app="ShoppingListApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body ng-controller="ListController">
+    <h1>Example 1</h1>
+    <h1></h1>
+    <h1></h1>
+    <hr>
+    <h3> My Shopping List</h3>
+    <h4>So far <big>{{list.length}}</big> items</h4>
+    <table>
+        <tr ng-repeat="item in list">
+            <td>{{index+1}}</td>
+            <td>{{item}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="remove(item)">X</button>
+            </td>
+        </tr>
+
+    </table>
+    <hr>
+    <input type="text" ng-model="newItem">
+    <button class="btn btn-success" ng-click="addItem(newItem)">Ekle</button>
+</body>
+
+</html>
+--------------
+.css
+table{
+    border: solid 2 px black;
+
+}
+td{
+    width: 50px;
+    font-size:30px ;
+    border: solid 2px black;
+    text-align: center;
+    padding: 5px 10px;
+
+}
+tr:hover{
+    background-color: gray;
+    color: white;   
+
+
+}
+input{
+    font-size: 30px;
+    width: 200px;
+    color:green;
+    padding: 0px 10px;
+}
+button{
+    width: 70px;
+    height: 70pz;
+
+}
+------------
+.js
+var app= angular.module("ShoppingListApp",[]);
+
+app.controller("ListController",function($scope){
+    //$scope.testing="if angularJS is working, you should see this message!"
+    $scope.list=["süt","peynir","çikolata"];
+    $scope.addItem=function(z){
+        $scope.list.push(z);
+        $scope.newItem=""
+    }
+    $scope.remove=function(y){
+        var removeItem=$scope.list.indexOf(y);
+        $scope.list.splice(removeItem,1);
+
+    }
+});
