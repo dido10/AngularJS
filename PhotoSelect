@@ -1,0 +1,66 @@
+Photos are Not show up!!!
+
+AngularJS
+var app= angular.module("RembardtApp",[]);
+app.controller("PaintingController", function($scope){
+   // $scope.testing="if you see this message, it is working!";
+  $scope.paintingCount=0;
+   $scope.painting = [
+       "images1/derscalisan.png",
+      // "images/2.png",
+      // "images/3.png",
+      // "images/4.png",
+      // "images/5.png",
+       //"images/6.png",
+   ];
+    $scope.Previous=function(){
+        $scope.paintingCount=$scope.paintingCount-1;
+    }
+    $scope.Next=function(){
+        $scope.paintingCount=$scope.paintingCount-1;
+    }
+});
+-----------
+HTML
+<!DOCTYPE html>
+<html lang="en" ng-app="RembardtApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rembrant's Paintings</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+</head>
+<body ng-controller="PaintingController">
+    <!--    {{testing}}-->
+    <h1>Example 2</h1>
+    <h1>with Angular Mikey</h1>
+    <table>
+        <tr>
+            <td>
+                <button class="btn btn-danger" ng-click="Previuos();">Previuos</button></td>
+            <td> 
+                <img class="big" ng-src="{{painting[paintingCount]}}" >
+                
+            </td>
+            <td>
+                <button class="btn btn-success" ng-click="Next();">Next</button></td>
+        </tr>
+    </table>
+</body>
+</html>
+-----------
+CSS
+button{
+    width: 100px;
+    height: 100px;
+}
+.big{
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+}
