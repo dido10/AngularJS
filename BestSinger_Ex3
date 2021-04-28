@@ -1,0 +1,98 @@
+AngularJS
+var app= angular.module("SingerApp",[]);
+
+app.controller("SingerController",function($scope){
+//$scope.testing="if you see angularjs is working"
+$scope.singers=[
+    {"name":"beyonce","pic":"png/beyonce.jpg","gender":"F","quality":"png/like.png"},
+    {"name":"Lady gaga","pic":"png/ladygaga.jpg","gender":"F","quality":"png/dislike.png"},
+    {"name":"Bruno Mars","pic":"png/brunomars.jpg","gender":"M","quality":"png/like.png"},
+    {"name":"Ed Sheeran","pic":"png/edsheeran.jpg","gender":"M","quality":"png/dislike.png"},
+    {"name":"Adele","pic":"png/adele.jpg","gender":"F","quality":"png/like.png"}
+
+]
+});
+
+-----------
+HTML
+<!DOCTYPE html>
+<html lang="en" ng-app="SingerApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Singers</title>
+    <!--this is angular js to enhance our javascript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <!--Java scripts file-->
+    <script src="app.js"></script>
+    <!--this is bootstrapt to enhance our javascript-->
+    <link rel="stylesheet" href="style.css">
+    <!--our css file-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+</head>
+
+<body ng-controller="SingerController">
+    <div>
+        <strong>See The</strong>
+        <button ng-click="MaleorFemale ='M'">Male</button>
+        <button ng-click="MaleorFemale ='F'">Female</button>
+        <strong>Singers</strong>
+    </div>
+    <table class="singer-table">
+        <tr ng-repeat="singer in singers" ng-if="singer.gender==MaleorFemale">
+            <td><img class="singer_pic" src="{{singer.pic}}" alt=""></td>
+            <td class="name">{{singer.name}}</td>
+            <td class="quality-icon"><img class="quality-img" src="{{singer.quality}}" alt=""></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
+----------
+CSS
+button{
+    width: 75px;
+    height: 75px;
+}
+
+
+.quality-img{
+    width: 60px;
+    border-radius: 60px;
+}
+
+.singer_pic{
+    width: 80px;
+    height: 80px;
+    border:solid gray 1px;
+}
+
+div{
+    border: 10px purple solid;
+    width: 300px;
+    height: 100px;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+.name{
+    font: bold;
+    font-size: 20px;
+    width: 150px;
+}
+.singer-table td{
+    border: solid 1px black;
+    text-align: center;
+}
+
+.name:hover{
+    font: bold;
+    background-color: gray;
+    color: white;
+    font-size: 15px;
+    width: 150px;
+}
